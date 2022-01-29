@@ -1,37 +1,54 @@
+import 'package:TaskOS/user_state.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:TaskOS/inner_screens/task_details.dart';
+import 'package:TaskOS/screens/auth/login.dart';
+import 'package:TaskOS/screens/tasks_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TaskOS',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.amber,
-      ),
-      home: const MyHomePage(title: 'Project Starter'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Text(
-        title,
-        style: Theme.of(context).textTheme.headline3,
-      )),
-    );
+    return FutureBuilder(
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: Center(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ),
+            );
+          } else if (snapshot.hasError) {
+            MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: Center(
+                  child: Center(
+                    child: Text('An error has been occured!'),
+                  ),
+                ),
+              ),
+            );
+          }
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter taskos',
+              theme: ThemeData(
+                scaffoldBackgroundColor: Color(0xFFEDE7DC),
+                primarySwatch: Colors.blue,
+              ),
+              home: UserState());
+        });
   }
 }
