@@ -1,10 +1,9 @@
-import 'dart:ui';
-import 'package:TaskOS/services/global_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/constants/constants.dart';
-import 'package:TaskOS/widgets/comment_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:taskos/services/methods.dart';
+import 'package:taskos/utils/constants.dart';
+import 'package:taskos/widgets/comment_widget.dart';
 import 'package:uuid/uuid.dart';
 
 class TaskDetailsScreen extends StatefulWidget {
@@ -106,9 +105,9 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
             .doc(widget.taskId)
             .update({'isDone': state})
             .then((value) => setState(() => _isDone = state))
-            .catchError((error) => GlobalMethod.showErrorDialog(
+            .catchError((error) => Methods.showErrorDialog(
                 ctx: context, error: "Action can't be performed"))
-        : GlobalMethod.showErrorDialog(
+        : Methods.showErrorDialog(
             ctx: context, error: "You can't perform this action");
   }
 
@@ -315,7 +314,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                           onPressed: () async {
                                             if (_commentController.text.length <
                                                 7) {
-                                              GlobalMethod.showErrorDialog(
+                                              Methods.showErrorDialog(
                                                   ctx: context,
                                                   error:
                                                       "Comment can't be less than 7 characters");

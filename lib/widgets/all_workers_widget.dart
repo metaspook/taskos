@@ -1,7 +1,6 @@
-import 'dart:ui';
-import 'package:TaskOS/inner_screens/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/constants/constants.dart';
+import 'package:taskos/pages/inner/profile.dart';
+import 'package:taskos/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AllWorkersWidget extends StatefulWidget {
@@ -33,7 +32,7 @@ class _AllWorkersWidgetState extends State<AllWorkersWidget> {
         onTap: () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => ProfileScreen(userId: widget.userId))),
+                builder: (context) => ProfilePage(userId: widget.userId))),
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         leading: Container(
           padding: EdgeInsets.only(right: 12),

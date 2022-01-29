@@ -1,21 +1,21 @@
-import 'package:TaskOS/user_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
+import 'package:taskos/user_state.dart';
+import 'package:taskos/utils/constants.dart';
+import 'package:taskos/widgets/drawer_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:TaskOS/constants/constants.dart';
-import 'package:TaskOS/widgets/drawer_widget.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfilePage extends StatefulWidget {
   final String userId;
-  const ProfileScreen({required this.userId});
+  const ProfilePage({required this.userId});
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   var _titleTextStyle = TextStyle(
     fontSize: 22,

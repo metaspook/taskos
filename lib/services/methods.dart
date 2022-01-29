@@ -1,7 +1,7 @@
-import 'package:TaskOS/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:taskos/utils/constants.dart';
 
-class GlobalMethod {
+class Methods {
   static void showErrorDialog(
       {required BuildContext ctx, required String error}) {
     showDialog(

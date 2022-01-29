@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/widgets/all_workers_widget.dart';
-import 'package:TaskOS/widgets/drawer_widget.dart';
+import 'package:taskos/widgets/all_workers_widget.dart';
+import 'package:taskos/widgets/drawer_widget.dart';
 
 // Fields should be 'final' or be Stateful widget with parameter 'context' removed from '_taskCategoryDialog' function.
-class AllWorkersScreen extends StatelessWidget {
+class AllWorkersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

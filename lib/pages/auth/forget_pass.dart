@@ -1,15 +1,12 @@
-import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/screens/auth/register.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
+class ForgetPasswordPage extends StatefulWidget {
   @override
-  _ForgetPasswordScreenState createState() => _ForgetPasswordScreenState();
+  _ForgetPasswordPageState createState() => _ForgetPasswordPageState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
+class _ForgetPasswordPageState extends State<ForgetPasswordPage>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;

@@ -1,11 +1,11 @@
-import 'package:TaskOS/user_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/constants/constants.dart';
-import 'package:TaskOS/inner_screens/profile.dart';
-import 'package:TaskOS/inner_screens/upload_task.dart';
-import 'package:TaskOS/screens/all_workers.dart';
-import 'package:TaskOS/screens/tasks_screen.dart';
+import 'package:taskos/pages/all_tasks.dart';
+import 'package:taskos/pages/all_workers.dart';
+import 'package:taskos/pages/inner/profile.dart';
+import 'package:taskos/pages/inner/task_upload.dart';
+import 'package:taskos/user_state.dart';
+import 'package:taskos/utils/constants.dart';
 
 class DrawerWidget extends StatelessWidget {
   @override
@@ -93,28 +93,28 @@ class DrawerWidget extends StatelessWidget {
     final _uid = user!.uid;
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => ProfileScreen(userId: _uid)),
+      MaterialPageRoute(builder: (context) => ProfilePage(userId: _uid)),
     );
   }
 
   void _navigateToAllTasksScreen(context) => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => TasksScreen(),
+          builder: (context) => AllTasksPage(),
         ),
       );
 
   void _navigateToAllWorkersScreen(context) => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => AllWorkersScreen(),
+          builder: (context) => AllWorkersPage(),
         ),
       );
 
   void _navigateToAddTaskScreen(context) => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => UploadTask(),
+          builder: (context) => TaskUpload(),
         ),
       );
 

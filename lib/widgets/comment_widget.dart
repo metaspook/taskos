@@ -1,5 +1,5 @@
-import 'package:TaskOS/inner_screens/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:taskos/pages/inner/profile.dart';
 
 class CommentWidget extends StatefulWidget {
   // final String commentId;
@@ -38,7 +38,7 @@ class _CommentWidgetState extends State<CommentWidget> {
       onTap: () => Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => ProfileScreen(userId: widget.commenterId))),
+              builder: (context) => ProfilePage(userId: widget.commenterId))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

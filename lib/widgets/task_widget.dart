@@ -1,11 +1,10 @@
-import 'dart:ui';
-import 'package:TaskOS/services/global_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/constants/constants.dart';
-import 'package:TaskOS/inner_screens/task_details.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:taskos/pages/inner/task_details.dart';
+import 'package:taskos/services/methods.dart';
+import 'package:taskos/utils/constants.dart';
 
 class TaskWidget extends StatefulWidget {
   final String taskId;
@@ -129,12 +128,12 @@ class _TaskWidgetState extends State<TaskWidget> {
                     if (Navigator.canPop(ctx)) Navigator.pop(ctx);
                   } else {
                     if (Navigator.canPop(ctx)) Navigator.pop(ctx);
-                    GlobalMethod.showErrorDialog(
+                    Methods.showErrorDialog(
                         ctx: ctx, error: "You can't perform this action");
                   }
                 } catch (error) {
                   if (Navigator.canPop(ctx)) Navigator.pop(ctx);
-                  GlobalMethod.showErrorDialog(
+                  Methods.showErrorDialog(
                       ctx: ctx, error: "This task can't be deleted");
                 }
               },

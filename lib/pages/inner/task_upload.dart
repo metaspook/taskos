@@ -1,19 +1,19 @@
-import 'package:TaskOS/screens/tasks_screen.dart';
-import 'package:TaskOS/services/global_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/constants/constants.dart';
-import 'package:TaskOS/widgets/drawer_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:taskos/pages/all_tasks.dart';
+import 'package:taskos/services/methods.dart';
+import 'package:taskos/utils/constants.dart';
+import 'package:taskos/widgets/drawer_widget.dart';
 import 'package:uuid/uuid.dart';
 
-class UploadTask extends StatefulWidget {
+class TaskUpload extends StatefulWidget {
   @override
-  _UploadTaskState createState() => _UploadTaskState();
+  _TaskUploadState createState() => _TaskUploadState();
 }
 
-class _UploadTaskState extends State<UploadTask> {
+class _TaskUploadState extends State<TaskUpload> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController _taskCategoryController =
       TextEditingController(text: 'Choose task Category');
@@ -43,8 +43,7 @@ class _UploadTaskState extends State<UploadTask> {
     if (isValid) {
       if (_deadlineDateController.text == 'Choose task Deadline date' ||
           _taskCategoryController.text == 'Choose task Category') {
-        GlobalMethod.showErrorDialog(
-            ctx: context, error: 'Please pick everything');
+        Methods.showErrorDialog(ctx: context, error: 'Please pick everything');
         // return;
       } else {
         setState(() => _isLoading = true);
@@ -84,7 +83,7 @@ class _UploadTaskState extends State<UploadTask> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TasksScreen(),
+                builder: (context) => AllTasksPage(),
               ));
         }
       }

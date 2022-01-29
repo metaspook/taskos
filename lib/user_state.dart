@@ -1,7 +1,7 @@
-import 'package:TaskOS/screens/auth/login.dart';
-import 'package:TaskOS/screens/tasks_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:taskos/pages/auth/login.dart';
+import 'package:taskos/pages/tasks_screen.dart';
 
 class UserState extends StatelessWidget {
   @override

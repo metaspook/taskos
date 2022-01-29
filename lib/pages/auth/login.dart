@@ -1,18 +1,17 @@
-import 'dart:ui';
-import 'package:TaskOS/services/global_methods.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/screens/auth/forget_pass.dart';
-import 'package:TaskOS/screens/auth/register.dart';
+import 'package:taskos/pages/auth/forget_pass.dart';
+import 'package:taskos/pages/auth/register.dart';
+import 'package:taskos/services/methods.dart';
 
-class Login extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> with TickerProviderStateMixin {
+class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
   // TextEditingController must initialize either leads to error.
@@ -66,7 +65,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       if (Navigator.canPop(context)) Navigator.pop(context);
     } catch (error) {
       setState(() => _isLoading = false);
-      GlobalMethod.showErrorDialog(ctx: context, error: error.toString());
+      Methods.showErrorDialog(ctx: context, error: error.toString());
       print('error occured $error');
     }
     setState(() => _isLoading = false);
@@ -226,9 +225,11 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                   child: TextButton(
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForgetPasswordScreen()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgetPasswordPage(),
+                          ),
+                        );
                       },
                       child: Text(
                         'Forget password?',

@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:TaskOS/constants/constants.dart';
-import 'package:TaskOS/widgets/drawer_widget.dart';
-import 'package:TaskOS/widgets/task_widget.dart';
+import 'package:taskos/utils/constants.dart';
+import 'package:taskos/widgets/drawer_widget.dart';
+import 'package:taskos/widgets/task_widget.dart';
 
 // Fields should be 'final' or be Stateful widget with parameter 'context' removed from '_taskCategoryDialog' function.
-class TasksScreen extends StatefulWidget {
+class AllTasksPage extends StatefulWidget {
   @override
-  _TasksScreenState createState() => _TasksScreenState();
+  _AllTasksPageState createState() => _AllTasksPageState();
 }
 
-class _TasksScreenState extends State<TasksScreen> {
+class _AllTasksPageState extends State<AllTasksPage> {
   String? taskCategoryFilter;
   @override
   Widget build(BuildContext context) {
