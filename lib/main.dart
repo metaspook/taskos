@@ -29,12 +29,18 @@ class MyApp extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasError) {
-          return const MaterialApp(
+          return MaterialApp(
             debugShowCheckedModeBanner: false,
             home: Scaffold(
               body: Center(
                 child: Center(
-                  child: Text('An error has been occured!'),
+                  child: Text(
+                    'An error has been occured!',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5!
+                        .copyWith(color: Colors.red.shade800),
+                  ),
                 ),
               ),
             ),
