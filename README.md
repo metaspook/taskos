@@ -1,5 +1,5 @@
 # TaskOS 📝
-A office task operation and management app.
+A task operation and management app.
 
 ><b>Platforms:</b> Android, iOS<br><b>Language/SDK:</b> Dart, Flutter
 
