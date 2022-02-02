@@ -8,55 +8,38 @@ import 'package:taskos/user_state.dart';
 import 'package:taskos/utils/constants.dart';
 
 class DrawerWidget extends StatelessWidget {
+  const DrawerWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
           DrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.cyan,
                   image: DecorationImage(
                       image: AssetImage('assets/images/task_schedule_00.png'),
                       alignment: Alignment.centerLeft)),
               child: Column(
                 children: [
-                  // Flexible(
-                  //   flex: 1,
-                  //   child: Image.network(
-                  //       'https://cdn-icons-png.flaticon.com/512/4285/4285555.png',
-                  //       width: 500,
-                  //       height: 500,
-                  //       fit: BoxFit.cover),
-                  // ),
-                  // SizedBox(height: 5),
                   Row(
-                    children: [
+                    children: const [
                       SizedBox(width: 120),
-                      Text('Task OS',
-                          style: TextStyle(
-                            color: Constants.darkBlue,
-                            fontSize: 40,
-                            // fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Text(
+                        'Task OS',
+                        style: TextStyle(
+                          color: Constants.darkBlue,
+                          fontSize: 40,
+                          // fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
-                  // Flexible(
-                  //   child: Text(
-                  //     'Task OS',
-                  //     textAlign: TextAlign.end,
-                  //     style: TextStyle(
-                  //       color: Constants.darkBlue,
-                  //       fontSize: 40,
-                  //       // fontStyle: FontStyle.italic,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               )),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           _listTiles(
               label: 'Task Home',
               fct: () => _navigateToAllTasksScreen(context),
@@ -69,7 +52,7 @@ class DrawerWidget extends StatelessWidget {
               label: 'Worker Contacts',
               fct: () => _navigateToAllWorkersScreen(context),
               icon: Icons.workspaces_outlined),
-          Divider(thickness: 1),
+          const Divider(thickness: 1),
           _listTiles(
               label: 'My Profile',
               fct: () => _navigateToProfileScreen(context),
@@ -81,7 +64,7 @@ class DrawerWidget extends StatelessWidget {
                 _logout(context);
               },
               icon: Icons.logout),
-          Divider(thickness: 1),
+          const Divider(thickness: 1),
         ],
       ),
     );
@@ -134,13 +117,13 @@ class DrawerWidget extends StatelessWidget {
                     width: 20,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: const Text('Sign out'),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Sign out'),
                 )
               ],
             ),
-            content: Text(
+            content: const Text(
               'Do you wann a sign out?',
               style: TextStyle(
                 color: Constants.darkBlue,
@@ -152,7 +135,7 @@ class DrawerWidget extends StatelessWidget {
               TextButton(
                   onPressed: () =>
                       Navigator.canPop(context) ? Navigator.pop(context) : null,
-                  child: Text('Cancel')),
+                  child: const Text('Cancel')),
               TextButton(
                   onPressed: () {
                     _auth.signOut();
@@ -163,7 +146,7 @@ class DrawerWidget extends StatelessWidget {
                           builder: (context) => UserState(),
                         ));
                   },
-                  child: Text('OK', style: TextStyle(color: Colors.red))),
+                  child: const Text('OK', style: TextStyle(color: Colors.red))),
             ],
           );
         });
@@ -174,7 +157,6 @@ class DrawerWidget extends StatelessWidget {
           required Function fct,
           required IconData icon}) =>
       ListTile(
-        // visualDensity: VisualDensity.adaptivePlatformDensity,
         onTap: () => fct(),
         leading: Icon(
           icon,
@@ -182,10 +164,9 @@ class DrawerWidget extends StatelessWidget {
         ),
         title: Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             color: Constants.darkBlue,
             fontSize: 20,
-            // fontStyle: FontStyle.italic,
           ),
         ),
       );

@@ -14,12 +14,13 @@ class TaskWidget extends StatefulWidget {
   final bool isDone;
 
   const TaskWidget({
+    Key? key,
     required this.taskId,
     required this.taskTitle,
     required this.taskDescription,
     required this.authorId,
     required this.isDone,
-  });
+  }) : super(key: key);
 
   @override
   _TaskWidgetState createState() => _TaskWidgetState();
@@ -31,7 +32,7 @@ class _TaskWidgetState extends State<TaskWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 8,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: ListTile(
         onTap: () async {
           final DocumentSnapshot? commenterDoc = await FirebaseFirestore
@@ -53,10 +54,11 @@ class _TaskWidgetState extends State<TaskWidget> {
           );
         },
         onLongPress: _deleteDialog,
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         leading: Container(
-          padding: EdgeInsets.only(right: 12),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.only(right: 12),
+          decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(width: 1),
             ),
@@ -73,7 +75,7 @@ class _TaskWidgetState extends State<TaskWidget> {
           widget.taskTitle,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Constants.darkBlue,
           ),
@@ -90,7 +92,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               widget.taskDescription,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             )
           ],
         ),
@@ -139,7 +141,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Icon(
                     Icons.delete,
                     color: Colors.red,

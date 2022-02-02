@@ -12,12 +12,14 @@ class AllWorkersWidget extends StatefulWidget {
   final String? userImageUrl;
 
   const AllWorkersWidget(
-      {required this.userId,
+      {Key? key,
+      required this.userId,
       required this.userName,
       required this.userEmail,
       required this.userJobTitle,
       required this.userPhoneNumber,
-      required this.userImageUrl});
+      required this.userImageUrl})
+      : super(key: key);
   @override
   _AllWorkersWidgetState createState() => _AllWorkersWidgetState();
 }
@@ -27,16 +29,17 @@ class _AllWorkersWidgetState extends State<AllWorkersWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 8,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: ListTile(
         onTap: () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) => ProfilePage(userId: widget.userId))),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         leading: Container(
-          padding: EdgeInsets.only(right: 12),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.only(right: 12),
+          decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(width: 1),
             ),
@@ -53,7 +56,7 @@ class _AllWorkersWidgetState extends State<AllWorkersWidget> {
           widget.userName,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Constants.darkBlue,
           ),
@@ -70,7 +73,7 @@ class _AllWorkersWidgetState extends State<AllWorkersWidget> {
               '${widget.userJobTitle}/${widget.userPhoneNumber}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             )
           ],
         ),

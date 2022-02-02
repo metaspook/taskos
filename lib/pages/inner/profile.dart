@@ -17,12 +17,12 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  var _titleTextStyle = TextStyle(
+  final _titleTextStyle = const TextStyle(
     fontSize: 22,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.bold,
   );
-  var _contantTextStyle = TextStyle(
+  final _contantTextStyle = const TextStyle(
     color: Constants.darkBlue,
     fontSize: 18,
     fontStyle: FontStyle.normal,
@@ -70,7 +70,8 @@ class _ProfilePageState extends State<ProfilePage> {
           _isSameUser = _uid == widget.userId;
         });
       }
-    } catch (error) {
+    } catch (err) {
+      print(err);
     } finally {
       _isLoading = false;
     }
@@ -80,25 +81,21 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              child:
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 0),
-                  //   child:
-                  Stack(
+              child: Stack(
                 children: [
                   Card(
-                    margin: EdgeInsets.all(30),
+                    margin: const EdgeInsets.all(30),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -107,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 100),
+                          const SizedBox(height: 100),
                           Align(
                               alignment: Alignment.center,
                               child: Text(
@@ -115,17 +112,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ? 'FullName here'
                                       : userFullName!,
                                   style: _titleTextStyle)),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Align(
                               alignment: Alignment.center,
                               child: Text(
                                   '$userJobTitle Since joined $joiningDate',
                                   style: _contantTextStyle)),
-                          SizedBox(height: 15),
-                          Divider(thickness: 1),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 15),
+                          const Divider(thickness: 1),
+                          const SizedBox(height: 20),
                           Text('Contact Info', style: _titleTextStyle),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Padding(
                             padding: const EdgeInsets.all(3.0),
                             child:
@@ -137,9 +134,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 title: 'Phone number:',
                                 contant: userPhoneNumber),
                           ),
-                          SizedBox(height: 15),
-                          Divider(thickness: 1),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 15),
+                          const Divider(thickness: 1),
+                          const SizedBox(height: 20),
                           _isSameUser
                               ? Container()
                               : Row(
@@ -163,9 +160,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                         icon: Icons.call_outlined),
                                   ],
                                 ),
-                          SizedBox(height: 25),
-                          _isSameUser ? Container() : Divider(thickness: 1),
-                          _isSameUser ? Container() : SizedBox(height: 25),
+                          const SizedBox(height: 25),
+                          _isSameUser
+                              ? Container()
+                              : const Divider(thickness: 1),
+                          _isSameUser
+                              ? Container()
+                              : const SizedBox(height: 25),
                           !_isSameUser
                               ? Container()
                               : Center(
@@ -177,7 +178,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => UserState(),
+                                              builder: (context) =>
+                                                  const UserState(),
                                             ));
                                       },
                                       color: Colors.pink.shade700,
@@ -192,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
-                                          children: [
+                                          children: const [
                                             Icon(Icons.logout,
                                                 color: Colors.white),
                                             SizedBox(width: 8),
@@ -244,24 +246,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> _launchUrl(url) async =>
       await canLaunch(url) ? await launch(url) : throw "Couldn't launch: $url";
-
-  // Future<void> _openWhatsAppChat() async {
-  //   String _phoneNumber = '+54353454354';
-  //   var _url = 'https://wa.me/$_phoneNumber?text=Hello%20World';
-  //   await canLaunch(_url) ? await launch(_url) : throw "Couldn't launch: $_url";
-  // }
-
-  // Future<void> _mailTo() async {
-  //   String _email = 'metasp01k@gmail.com';
-  //   var _url = 'mailto:$_email';
-  //   await canLaunch(_url) ? await launch(_url) : throw "Couldn't launch: $_url";
-  // }
-
-  // Future<void> _callPhoneNumber() async {
-  //   String _phoneNumber = '+54353454354';
-  //   var _url = 'tel://$_phoneNumber';
-  //   await canLaunch(_url) ? await launch(_url) : throw "Couldn't launch: $_url";
-  // }
 
   Widget _contactBy(
       {required Color color, required Function fct, required IconData icon}) {

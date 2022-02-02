@@ -9,12 +9,13 @@ class CommentWidget extends StatefulWidget {
   final String? commenterImageUrl;
 
   const CommentWidget({
+    Key? key,
     // required this.commentId,
     required this.commentBody,
     required this.commenterId,
     required this.commenterName,
     required this.commenterImageUrl,
-  });
+  }) : super(key: key);
 
   @override
   State<CommentWidget> createState() => _CommentWidgetState();
@@ -52,7 +53,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                 border: Border.all(width: 2, color: _colors[1]),
                 shape: BoxShape.circle,
                 image: widget.commenterImageUrl == null
-                    ? DecorationImage(
+                    ? const DecorationImage(
                         image:
                             AssetImage('assets/images/placeholder_user_01.png'),
                         fit: BoxFit.fill)
@@ -62,7 +63,7 @@ class _CommentWidgetState extends State<CommentWidget> {
               ),
             ),
           ),
-          SizedBox(width: 6),
+          const SizedBox(width: 6),
           Flexible(
               flex: 5,
               child: Column(
@@ -70,7 +71,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                 children: [
                   Text(
                     widget.commenterName,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
