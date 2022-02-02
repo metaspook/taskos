@@ -1,16 +1,27 @@
-# taskos
+# TaskOS 📝
+A office task operation and management app.
 
-A new Flutter project.
+><b>Platforms:</b> Android, iOS<br><b>Language/SDK:</b> Dart, Flutter
 
-## Getting Started
+## **🎈 Screenshots**
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_00.jpg" width="204" height="430">&emsp;
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_01.jpg" width="204" height="430">&emsp;
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_02.jpg" width="204" height="430">&emsp;
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_03.jpg" width="204" height="430">&emsp;
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_04.jpg" width="204" height="430">&emsp;
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_05.jpg" width="204" height="430">&emsp;
+<img alt="&nbsp;Missing screenshot!" src="screenshots/screenshot_06.jpg" width="204" height="430"><br>
 
-This project is a starting point for a Flutter application.
+## **🎈 Features**
+* User profile and Worker contacts.
+* Call, mail and Whatsapp to co-workers.
+* Chat/comment on task.
+* Author can upload, delete a task and change state.
+* Other more features..
 
-A few resources to get you started if this is your first Flutter project:
+## **🎈 Remarks**
+<details><summary>Click to collapse/fold.</summary>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+* Packages: image_picker, image_cropper, url_launcher, fluttericon, firebase_auth, firebase_core, cloud_firestore, firebase_storage, uuid, fluttertoast.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</details>
